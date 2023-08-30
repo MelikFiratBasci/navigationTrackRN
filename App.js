@@ -14,6 +14,22 @@ import TrackListScreen from './src/screens/TrackListScreen';
 
 
 
+const switchNavigator = createSwitchNavigator({
+    loginFlow : createStackNavigator({ // switch navigator içerisinde stack navigator dolaylı cağrısı 
+        SignupScreen: SignupScreen,
+        SigninScreen : SigninScreen,
+    }),
+
+    mainFlow : createMaterialBottomTabNavigator({
+        trackListFlow : createStackNavigator({
+            TrackList : TrackListScreen, 
+            TrackDetail : TrackDetailScreen
+        }),
+
+        TrackCreate : TrackCreateScreen,
+        Account : AccountScreen
+    })
+}); 
 
 
-
+export default createAppContainer(switchNavigator)

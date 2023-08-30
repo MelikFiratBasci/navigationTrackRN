@@ -16,14 +16,15 @@ import {Provider as AuthProvider} from './src/context/AuthContext'
 import { setNavigator } from './src/navigationRef';
 
 
+
 const switchNavigator = createSwitchNavigator({
     initial : InitialScreen,
     loginFlow : createStackNavigator({ // switch navigator içerisinde stack navigator dolaylı cağrısı 
-        Signup: SignupScreen,
         Signin : SigninScreen,
+        Signup: SignupScreen,
     }),
 
-    mainFlow : createMaterialBottomTabNavigator({
+    mainFlow: createMaterialBottomTabNavigator({
         trackListFlow : createStackNavigator({
             TrackList : TrackListScreen, 
             TrackDetail : TrackDetailScreen

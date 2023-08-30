@@ -1,15 +1,19 @@
-import React from "react";
+import React, {useContext} from "react";
 import { View, StyleSheet, Text } from "react-native";
+import { NavigationEvents } from "react-navigation";// navigation events navigation işlemleri yapıldığında tetiklenir
 import Authform from "../components/AuthForm";
 import Navlink from "../components/Navlink";
-
+import { Context } from "../context/AuthContext";
 const SigninScreen = () => {
+    const {state, signin, clearErrorMessage} = useContext(Context)
   return (
     <View style = {styles.container} >
+       <NavigationEvents onWillFocus={clearErrorMessage} />
+
       <Authform
         headerText="Sign in to your account"
-        errorMessage=""
-        onSubmit={() => {}}
+        errorMessage={state.errorMessage}
+        onSubmit={signin}
         submitButtonText="Sign In"
       />
       <Navlink
@@ -35,8 +39,8 @@ const styles = StyleSheet.create({
 });
 export default SigninScreen;
 
-/* SigninScreen.navigationOptions = () => {
-  return {
-    headerShown: false,
-  };
+/* 
+<NavigationEvents onWillFocus={clearErrorMessage}
+
+
 };*/

@@ -41,7 +41,7 @@ const AuthForm = ({headerText, errorMessage, onSubmit, submitButtonText}) => {
 };
 
 
-const styleSheet = StyleSheet.create({
+const styles = StyleSheet.create({
     errorMessage : {
         fontSize : 16,
         color : 'red',

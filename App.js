@@ -17,6 +17,7 @@ import { Provider as LocationProvider } from "./src/context/LocationContext";
 import { Provider as TrackProvider } from "./src/context/TrackContext";
 import { FontAwesome } from "@expo/vector-icons";
 
+// TrackList için Stack Navigator
 const trackListFlow = createStackNavigator({
   TrackList: TrackListScreen,
   TrackDetail: TrackDetailScreen,
@@ -26,10 +27,10 @@ trackListFlow.navigationOptions = {
   tabBarIcon: <FontAwesome name="th-list" size={20} />,
 };
 
+// Ana gezinme işlemleri için Switch Navigator
 const switchNavigator = createSwitchNavigator({
   initial: InitialScreen,
   loginFlow: createStackNavigator({
-    // switch navigator içerisinde stack navigator dolaylı cağrısı
     Signin: SigninScreen,
     Signup: SignupScreen,
   }),
@@ -41,14 +42,15 @@ const switchNavigator = createSwitchNavigator({
       Account: AccountScreen,
     },
     {
-      initialRouteName: "trackListFlow", // İlk görünen ekranı belirtin
-      activeColor: "black", // Aktif durumdaki simge ve metin rengi
-      inactiveColor: "white", // Pasif durumdaki simge ve metin rengi
-      barStyle: { backgroundColor: "darkorange" }, // Tab çubuğunun arka plan rengi
+      initialRouteName: "trackListFlow",
+      activeColor: "black",
+      inactiveColor: "white",
+      barStyle: { backgroundColor: "darkorange" },
     }
   ),
 });
 
+// Ana uygulama bileşeni
 const App = createAppContainer(switchNavigator);
 export default () => {
   return (
@@ -65,3 +67,14 @@ export default () => {
     </TrackProvider>
   );
 };
+/*
+Bu kod bloğu, bir mobil uygulamanın temel gezinme ve bileşen yapılarını oluşturan bileşenler ve yönlendirmeler içerir. 
+Farklı ekranları içeren Stack ve Tab Navigator'lar oluşturulur ve Switch Navigator ile yönlendirme işlemleri yapılır. 
+Ayrıca, AuthProvider, LocationProvider ve TrackProvider ile bağlam verileri sağlanır ve setNavigator fonksiyonu ile gezinme işlemleri yardımcı fonksiyonlara iletilir. 
+Sonuç olarak, bu kod parçası, uygulamanın gezinme yapısını ve bileşen yapısını belirler.
+
+
+
+
+
+*/

@@ -44,6 +44,7 @@ const signup =
 
       navigate("TrackList");
     } catch (error) {
+      console.log(error)
       dispatch({
         type: "add_error",
         payload: "something went wrong with sign up",
@@ -61,6 +62,7 @@ const signin =
 
       navigate("TrackList");
     } catch (error) {
+      console.log(error)
       dispatch({
         type: "add_error",
         payload: "something went wrong with sign up",
